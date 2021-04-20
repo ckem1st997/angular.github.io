@@ -1,0 +1,66 @@
+<mdb-breadcrumb>
+  <mdb-breadcrumb-item routerLinkActive="router-link-active" class="blue-text">
+    <a [routerLink]="['/']" routerLinkActive="router-link-active">Home</a>
+
+  </mdb-breadcrumb-item>
+  <mdb-breadcrumb-item class="blue-text active">Bài Viết</mdb-breadcrumb-item>
+</mdb-breadcrumb>
+<section class="my-2 container-fluid">
+
+  <!-- Section heading -->
+  <h2 class="h1-responsive font-weight-bold text-center">Bài Viết</h2>
+  <!-- Section description -->
+  <p class="text-center w-responsive mx-auto mb-5">Một sản phẩm được viết bởi Nguyễn Khả Hợp dựa trên kiến trúc
+    MicroService, cảm ơn bạn vì đã bỏ chút thời gian để truy cập vào trang web của tớ nha...</p>
+
+  <div *ngFor="let item of listA;">
+    <div class="row mb-2" routerLink="/article/{{item.id}}/{{item.url}}">
+
+      <!-- Grid column -->
+      <div class="col-md-5">
+
+        <!-- Featured image -->
+        <div class="view overlay rounded z-depth-2 mb-lg-0 mb-4 waves-light" mdbWavesEffect>
+          <img class="img-fluid" src="http://res.cloudinary.com/imageshared/image/upload/f_auto,q_auto/v1/{{item.coverImage}}" alt="Sample image">
+          <a>
+            <div class="mask rgba-white-slight"></div>
+          </a>
+        </div>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-7">
+
+        <!-- Category -->
+        <a href="#!" class="green-text">
+          <h6 class="font-weight-bold mb-3">
+            <mdb-icon fas icon="utensils" class="pr-2"></mdb-icon>{{item.nameBlog}}
+          </h6>
+        </a>
+        <!-- Post title -->
+        <h3 class="font-weight-bold mb-3"><div>{{item.description}}</div></h3>
+        <!-- Excerpt -->
+        <p>{{item.titleMeta}}</p>
+        <!-- Post data -->
+        <p>by <a><strong>Nguyễn Khả Hợp</strong></a>, {{item.createDate.substring(0,10)}}</p>
+        <!-- Read more button -->
+        <a mdbBtn color="success" mdbWavesEffect>Chi tiết</a>
+
+      </div>
+      <!-- Grid column -->
+    </div>
+    <hr class="mt-2"/>
+  </div>
+
+
+  <!-- Grid row -->
+
+
+
+  <!-- Grid row -->
+
+
+</section>
+<!-- Section: Blog v.1 -->

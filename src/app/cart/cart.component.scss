@@ -1,0 +1,50 @@
+.cart{
+    @media (max-width: 768px) { 
+        .cart-info{
+        font-size: 12px !important;
+        }
+    }
+    .cart-info{
+        .list-cart{
+            .cart-product{
+                .thongso{
+                    button{
+                        padding: 7px 20px 7px 20px !important;
+                        font-size: 23px !important;
+
+                    
+                    }
+                    p{
+                        span{
+                            font-weight: 600;
+                        }
+                       
+                    }
+                }
+                    // @media (max-width:992px) {
+                    //  .demsl{
+                    //      display: flex;
+                    //     justify-content: flex-end
+                    //  }
+                    // }
+            }
+        }
+        .Summary{
+            .sum-price{
+                p{
+                    display: flex;
+                    justify-content: space-between;
+                    span{
+                        font-weight: bold;
+                    }
+                    
+                }
+                p.tt{
+                    font-weight: bold;
+                }
+                
+            }
+        }
+    }
+    
+}

@@ -1,0 +1,74 @@
+<main class="mt-2">
+  <mdb-breadcrumb>
+    <mdb-breadcrumb-item routerLinkActive="router-link-active" class="blue-text">
+      <a [routerLink]="['/']" routerLinkActive="router-link-active">Home</a>
+
+    </mdb-breadcrumb-item>
+    <mdb-breadcrumb-item class="blue-text">Bài Viết</mdb-breadcrumb-item>
+    <mdb-breadcrumb-item class="active">Library</mdb-breadcrumb-item>
+  </mdb-breadcrumb>
+
+  <div id="reviewblog" class="ReviewDetail-page" data-style="style_01">
+    <input type="hidden" id="rvInfo" value="">
+    <div class="container-fluid" *ngIf="article">
+      <div class="row review-detail-wrapper">
+        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 review-detail-post">
+          <div class="review-detail-post-title mb-4">
+            <div class="post-title wow animate__fadeInLeftBig" data-wow-duration="1s" data-wow-delay="0.5s">
+              {{article.subject}}
+            </div>
+            <div class="post-info text-center mt-2 wow animate__fadeInUpBig" data-wow-duration="1.5s"
+              data-wow-delay="0.5s">
+              <span class="by">By Admin on </span>
+              <i class="far fa-window-minimize ml-2"></i>
+              <span class="date"> {{article.createDate.substring(0,10)}}</span>
+              <span class="view"> <i class="far fa-eye"></i> 1{{article.view}} Views</span>
+              <span class="cmt"><i class="far fa-comments"></i> 22 Bình luận</span>
+            </div>
+          </div>
+          <div class="review-blog" [innerHTML]="article.body">
+          </div>
+          <div class="share-social text-center">
+            <span class="font-weight-bold"> Share: &nbsp;</span>
+            <mdb-icon fab icon="facebook-f"></mdb-icon>
+            <mdb-icon class="ml-3" fab icon="twitter"></mdb-icon>
+            <mdb-icon class="ml-3" fab icon="google-plus-g"></mdb-icon>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 review-detail-latest review-detail-post">
+
+          <div class="post-title w-100 mb-5">
+            BÀI VIẾT
+          </div>
+
+          <div class="review-detail-latest-content " *ngFor="let item of listA">
+            <a style="text-decoration:none" routerLink='/article/{{item.id}}/{{item.url}}'>
+              <div class="d-flex justify-content-between">
+                <img
+                  src="http://res.cloudinary.com/imageshared/image/upload/c_scale,h_100,w_224/v1/{{item.coverImage}}">
+                <div class="">
+                  <div class="title-main test2 mb-3 ml-2 font-weight-bold">{{item.titleMeta}}</div>
+                  <span class="date-info font-weight-bold ml-2">{{item.createDate.substring(0,10)}}</span>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="post-title w-100 mb-3 text-left">
+            Từ khóa
+          </div>
+          <div class="key-word container p-0">
+            <div class="row">
+              <div class="col-8">
+                <label class="ml-1" *ngFor="let item of article.keyWord.split(',')">
+                  {{item}}
+                </label>              
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</main>

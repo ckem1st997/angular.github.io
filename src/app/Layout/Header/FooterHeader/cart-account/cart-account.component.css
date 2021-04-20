@@ -1,0 +1,87 @@
+.header-wrap-icon {
+  text-align: right;
+}
+.header-wrap-icon > span {
+  display: inline-block;
+  margin: 8px 5px 0;
+  position: relative;
+  transition: opacity 150ms linear;
+}
+.icon-account {
+  vertical-align: -1px;
+  -ms-transform: rotate(0);
+  -webkit-transform: rotate(0);
+  transform: rotate(0);
+  position: relative;
+}
+.icon-account svg {
+  fill: #252a2b;
+  width: 24px;
+  height: 24px;
+}
+.icon-account:hover .account-dropdown {
+  display: block;
+}
+.icon-account .account-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  width: 200px;
+  background: white;
+  z-index: 999;
+  right: 0px;
+  box-shadow: 0px 0px 7px rgba(0, 0, 0, 0.15);
+}
+.icon-account .account-dropdown a {
+  display: block;
+}
+.icon-account .account-dropdown .account-dropdown-item {
+  text-align: left;
+  padding: 10px 20px;
+  border-bottom: 1px solid #eaeaea;
+}
+.icon-cart .count {
+  animation-name: scroll-in;
+}
+.icon-cart:hover .cart-menu .count {
+  animation-name: scroll-out;
+}
+.icon-cart svg {
+  fill: #252a2b;
+  width: 24px;
+  height: 24px;
+}
+.cart-menu .count-holder {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1;
+  font-weight: bold;
+  height: 17px;
+  overflow: hidden;
+}
+.cart-menu .count {
+  transition: top 150ms linear;
+  position: relative;
+  top: 0px;
+  animation-duration: 300ms;
+}
+.icon-search {
+  vertical-align: -1px;
+  -ms-transform: rotate(0);
+  -webkit-transform: rotate(0);
+  transform: rotate(0);
+}
+.icon-search:hover {
+  -ms-transform: rotate(-5deg);
+  -webkit-transform: rotate(-5deg);
+  transform: rotate(-5deg);
+}
+.icon-search svg {
+  fill: #252a2b;
+  width: 24px;
+  height: 24px;
+}

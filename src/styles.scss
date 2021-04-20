@@ -1,0 +1,184 @@
+
+img{
+    max-width: 100%;
+  }
+  
+  li{
+    list-style: none;
+  }
+  .clearfix,
+  .clearfix:before,
+  .clearfix:after,
+  .dl-horizontal dd:before,
+  .dl-horizontal dd:after,
+  .container:before,
+  .container:after,
+  .container-fluid:before,
+  .container-fluid:after,
+  .row:before,
+  .row:after,
+  .form-horizontal .form-group:before,
+  .form-horizontal .form-group:after,
+  .btn-toolbar:before,
+  .btn-toolbar:after,
+  .btn-group-vertical > .btn-group:before,
+  .btn-group-vertical > .btn-group:after,
+  .nav:before,
+  .nav:after,
+  .navbar:before,
+  .navbar:after,
+  .navbar-header:before,
+  .navbar-header:after,
+  .navbar-collapse:before,
+  .navbar-collapse:after,
+  .pager:before,
+  .pager:after,
+  .panel-body:before,
+  .panel-body:after,
+  .modal-footer:before,
+  .modal-footer:after {
+    display: table;
+    content: " ";
+  }
+  
+  .clearfix:after,
+  .dl-horizontal dd:after,
+  .container:after,
+  .container-fluid:after,
+  .row:after,
+  .form-horizontal .form-group:after,
+  .btn-toolbar:after,
+  .btn-group-vertical > .btn-group:after,
+  .nav:after,
+  .navbar:after,
+  .navbar-header:after,
+  .navbar-collapse:after,
+  .pager:after,
+  .panel-body:after,
+  .modal-footer:after {
+    clear: both;
+  }
+  
+  html, body { height: 100%; }
+  body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  // .d-flex{
+  //   display: flex;
+  // }
+  .w-100{
+    width: 100%;
+  }
+  .justify-between{
+    justify-content: space-between;
+  }
+  
+  .justify-around{
+    justify-content: space-around;
+  }
+  .space-left{
+    margin-left: 10px;
+  }
+  .items-center{
+    align-items: center;
+  }
+  .p-0{
+    padding: 0 !important;
+  }
+  .carousel-control-prev{
+    .carousel-control-prev-icon{
+        border: 2px solid white;
+    }
+}
+.carousel-control-next{
+  .carousel-control-next-icon{
+      border: 2px solid white;
+  }
+}
+.icon-list{
+    a.active{
+color:#d50000;
+    }
+  }
+.header-products-col{
+  mdb-badge.new{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  mdb-badge.sale{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+}
+.detailsProducts{
+  .carousel-thumbnails 
+  {
+    .carousel-indicators {
+      position: static;
+      left: initial;
+      width: initial;
+      margin-right: initial;
+      margin-left: initial;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+  }
+  .carousel-thumbnails .carousel-indicators>li {
+    width: initial;
+    height: initial;
+    text-indent: initial;
+}
+}
+
+// soos luwongj
+.count-product{
+	button{
+		background: #4285f4;
+		outline: none;
+		width: 38px;
+		height: 38px;
+		border: 0;
+		border-radius: 10%;
+		font-size: 26px;
+		color: white;
+	}
+
+	.quantity{
+		margin-top: 0;
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+}
+.chip {
+  display: inline-block;
+  height: 32px;
+  padding: 0 12px;
+ // margin-right: 1rem;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 32px;
+  color: rgba(0,0,0,0.6);
+  cursor: pointer;
+  background-color: #eceff1;
+  border-radius: 16px;
+  -webkit-transition: all .3s linear;
+  transition: all .3s linear;
+}
+.chip img {
+  float: left;
+  width: 32px;
+  height: 32px;
+  margin: 0 8px 0 -12px;
+  border-radius: 50%;
+}
+.waves-effect {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}

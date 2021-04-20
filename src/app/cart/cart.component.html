@@ -1,0 +1,117 @@
+<main class="cart mt-3 mb-3">
+  <h3 class="text-center">Giỏ hàng</h3>
+  <div class="cart-info container-fluid">
+    <div class="row">
+      <div class="list-cart col-12 col-sm-8 container">
+        <h5>Cart - 2 items</h5>
+        <hr>
+        <div class="row">
+          <div class="cart-product container col-12 col-lg-9">
+            <div class="row">
+              <div class="info col-6">
+                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(39).jpg" />
+              </div>
+              <div class="thongso col-6">
+                <p class="font-weight-bold">Blue denim shirts</p>
+                <p>Color: <span>blue</span></p>
+                <p>Size: <span>M</span></p>
+                <p>Price: <span>19.99$</span></p>
+                <button mdbBtn class="ml-0" type="button" color="primary" mdbWavesEffect>
+                  <mdb-icon fas icon="trash"></mdb-icon>
+                </button>
+                <button mdbBtn type="button" color="pink" mdbWavesEffect>
+                  <mdb-icon fas icon="heart"></mdb-icon>
+                </button>
+              </div>
+            </div>
+
+          </div>
+            <div class="count-product d-flex col-6 col-lg-3">
+              <button type="button" class="" (click)="truCart($event)">-</button>
+              <div class="md-form md-outline quantity">
+                <input type="number" id="form1" class="form-control" mdbInput [value]="1">
+                <label for="form1">Số lượng</label>
+              </div>
+              <button type="button" (click)="congCart($event)">+</button>
+            </div>
+         
+        </div>
+
+        <hr>
+        <div class="row">
+          <div class="cart-product container col-12 col-lg-9">
+            <div class="row">
+              <div class="info col-6">
+                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(37).jpg" />
+              </div>
+              <div class="thongso col-6">
+                <p class="font-weight-bold">Blue denim shirts</p>
+                <p>Color: <span>blue</span></p>
+                <p>Size: <span>M</span></p>
+                <p>Price: <span>19.99$</span></p>
+                <button mdbBtn class="ml-0" type="button" color="primary" mdbWavesEffect>
+                  <mdb-icon fas icon="trash"></mdb-icon>
+                </button>
+                <button mdbBtn type="button" color="pink" mdbWavesEffect>
+                  <mdb-icon fas icon="heart"></mdb-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="count-product d-flex col-6 col-lg-3">
+            <button type="button" class="" (click)="truCart($event)">-</button>
+              <div class="md-form md-outline quantity">
+                <input type="number" id="form1" class="form-control" mdbInput [value]="1">
+                <label for="form1">Số lượng</label>
+              </div>
+              <button type="button" (click)="congCart($event)">+</button>
+          </div>
+        </div>
+
+        <hr>
+        <div class="row">
+          <div class="cart-product container col-12 col-lg-9">
+            <div class="row">
+              <div class="info col-6">
+                <img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Products/img%20(38).jpg" />
+              </div>
+              <div class="thongso col-6">
+                <p class="font-weight-bold">Blue denim shirts</p>
+                <p>Color: <span>blue</span></p>
+                <p>Size: <span>M</span></p>
+                <p>Price: <span>19.99$</span></p>
+                <button mdbBtn class="ml-0" type="button" color="primary" mdbWavesEffect>
+                  <mdb-icon fas icon="trash"></mdb-icon>
+                </button>
+                <button mdbBtn type="button" color="pink" mdbWavesEffect>
+                  <mdb-icon fas icon="heart"></mdb-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="count-product d-flex col-6 col-lg-3">
+            <button type="button" class="" (click)="truCart($event)">-</button>
+            <div class="md-form md-outline quantity">
+              <input type="number" id="form1" class="form-control" mdbInput [value]="1">
+              <label for="form1">Số lượng</label>
+            </div>
+            <button type="button" (click)="congCart($event)">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="Summary col-12 col-sm-4">
+       <h5>Summary</h5>
+        <hr>
+        <div class="sum-price">
+          <p>Tổng tiền: <span>$123.79</span></p>
+          <p>Phí ship: <span>$0</span></p>
+          <hr>
+          <p class="tt">Thanh toán (Đã bao gồm VAT)<span>$123.79</span></p>
+          <hr>
+          <button type="button" class="w-100 ml-0" mdbBtn color="success" mdbWavesEffect><mdb-icon class="mr-1" fas icon="cart-plus"></mdb-icon>THANH TOÁN</button>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,159 @@
+<main class="mt-2 list-products">
+
+  <mdb-breadcrumb>
+    <mdb-breadcrumb-item routerLinkActive="router-link-active" class="blue-text">
+      <a [routerLink]="['/']" routerLinkActive="router-link-active">Home</a>
+    </mdb-breadcrumb-item>
+    <mdb-breadcrumb-item class="blue-text" routerLink="listproduct/12/ao">Sản phẩm</mdb-breadcrumb-item>
+    <mdb-breadcrumb-item class="active">{{namepc}}</mdb-breadcrumb-item>
+  </mdb-breadcrumb>
+  <div class="banner-list-image text-center mt-2">
+    <!-- <img src="https://mdbootstrap.com/img/Photos/Slides/1.jpg" /> -->
+    <img src="http://res.cloudinary.com/imageshared/image/upload/f_auto,q_auto/v1/{{imgpc}}">
+
+  </div>
+
+  <div class="title-lits-products text-center mt-2">
+    <h2>{{namepc}}</h2>
+  </div>
+  <section class="container-fluid listproducts">
+    <div class="row locproducts">
+      <div class="option-list col-12 col-md-3">
+        <p class="title-filters">
+          Filters
+        </p>
+        <hr>
+        <div class="row">
+          <div class="col-6 col-md-12 title-list-products">
+            <p class="title-condition ">
+              Review
+            </p>
+            <div class="check-list" style="color: #e3c700;">
+              <mdb-icon far icon="star"></mdb-icon>
+              <mdb-icon far icon="star"></mdb-icon>
+              <mdb-icon fas icon="star"></mdb-icon>
+              <mdb-icon far icon="star"></mdb-icon>
+              <mdb-icon far icon="star"></mdb-icon>
+            </div>
+          </div>
+          <div class="col-6 col-md-12 title-list-products">
+            <p class="title-price ">
+              Price
+            </p>
+            <div class="check-list-price">
+              <npn-slider [min]="0" [max]="1000000" (onChange)="onSliderChange($event)">
+              </npn-slider>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-12 title-list-products">
+
+            <p class="title-size">
+              Size
+            </p>
+            <div class="check-list-size d-flex flex-wrap">
+              <!-- Material unchecked -->
+              <div class="form-check col-md-6 col-lg-4 col-6" *ngFor="let item of listsize;; first as isFirst">
+                <input type="radio" value="{{item.sizeProduct}}" class="form-check-input" id="materialUnchecked"
+                  name="materialExampleRadios" mdbInput (change)="changeSize($event)">
+                <label class="form-check-label" for="materialUnchecked">{{item.sizeProduct}}</label>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-6 col-md-12 title-list-products">
+            <p class="title-color">
+              Color
+            </p>
+            <div class="layered-content filter-color s-filter">
+              <ul class="check-box-list">
+                <li *ngFor="let item of listcolor;">
+                  <input type="radio" id="{{item.colorId}}" value="{{item.nameColor}}" (change)="changeColor($event)"
+                    name="color-filter">
+                  <label for="{{item.colorId}}" [style.background-color]="item.code"></label>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+
+
+        </div>
+        <div class="text-center mt-2">
+          <button type="button" class="ml-0" mdbBtn color="primary" size="sm" mdbWavesEffect (click)="Search()">Tìm
+            kiếm</button>
+            <!-- <a type="button" class="ml-0" mdbBtn color="primary" size="sm" mdbWavesEffect routerLink="/products/1">T312</a> -->
+        </div>
+
+        <hr />
+      </div>
+
+      <div class="show-list col-12 col-md-9 ">
+        <p>List</p>
+        <div class="select-list">
+          <div class="select-list--1">
+            <select class="browser-default custom-select" (change)="Select($event)">
+              <option selected value="0">Mới nhất</option>
+              <option value="1">Giá: Tăng dần</option>
+              <option value="2">Giá: Giảm dần</option>
+              <option value="3">Tên: A-Z</option>
+              <option value="4">Tên: Z-A</option>
+            </select>
+          </div>
+          <div class="select-list--2 d-flex justify-content-center">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination pagination-circle pg-blue">
+                <li class="page-item " [class.disabled]="numberpage==1">
+                  <a class="page-link" aria-label="Previous" mdbWavesEffect (click)="blackpage($event)">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+
+                <li *ngFor="let item of arrypage" class="page-item" [class.active]="item==numberpage">
+                  <a class="page-link" mdbWavesEffect (click)="SelectNumber(item,$event)">
+                    {{item}}
+                  </a>
+                </li>
+                <li class="page-item" [class.disabled]="numberpage==coutpage">
+                  <a class="page-link" aria-label="Next" mdbWavesEffect (click)="nextpage($event)">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>        <div class="list-view-products">
+          <app-arry-product [slides]="slides"></app-arry-product>
+        </div>
+        <div class="select-list float-right">
+          <div>
+            <nav aria-label="Page navigation example">
+              <ul class="pagination pagination-circle pg-blue">
+                <li class="page-item " [class.disabled]="numberpage==1">
+                  <a class="page-link" aria-label="Previous" mdbWavesEffect (click)="blackpage($event)">
+                    <span aria-hidden="true">&laquo;</span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                </li>
+
+                <li *ngFor="let item of arrypage" class="page-item" [class.active]="item==numberpage">
+                  <a class="page-link" mdbWavesEffect (click)="SelectNumber(item,$event)">
+                    {{item}}
+                  </a>
+                </li>
+                <li class="page-item" [class.disabled]="numberpage==coutpage">
+                  <a class="page-link" aria-label="Next" mdbWavesEffect (click)="nextpage($event)">
+                    <span aria-hidden="true">&raquo;</span>
+                    <span class="sr-only">Next</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

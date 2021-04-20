@@ -1,0 +1,45 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6 col-lg-3 col-6 mb-3" *ngFor="let card of slides ; let i = index">
+      <mdb-card routerLink="/products/{{card.productId}}/{{slugify(card.name)}}" class="my-1">
+        <div class="view overlay zoom header-products-col">
+          <!-- <mdb-card-img [src]="card.image.split(',')[1]" alt="Card image cap"></mdb-card-img> -->
+          <!-- <cl-image public-id="{{card.image.split(',')[1]}}">
+            <cl-transformation quality="auto" fetch-format="auto" width="457" height="457" crop="scale">
+            </cl-transformation>
+          </cl-image> -->
+          <img src="http://res.cloudinary.com/imageshared/image/upload/c_scale,f_auto,h_457,q_auto,w_457/v1/{{card.image.split(',')[2]}}">
+          <div class="mask flex-center">
+            <p class="white-text">Mua</p>
+          </div>
+          <mdb-badge class="new" [primary]="true">NEW</mdb-badge>
+          <mdb-badge *ngIf="card.saleOff>0" class="sale" [danger]="true">-{{CeilPrice(card.saleOff,card.price)}}%</mdb-badge>
+        </div>
+
+        <mdb-card-body class="pb-0">
+          <mdb-card-title>
+            <h6 class="font-weight-bold text-primary name-products">{{card.name}}</h6>
+          </mdb-card-title>
+          <div class="price-products d-flex justify-between">
+            <del *ngIf="card.saleOff>0" class="grey-text">{{card.saleOff}}$</del>
+            <p class="text-danger">{{card.price}}$</p>
+          </div>
+          <!-- <a href="#" mdbBtn color="primary" class="waves-light" mdbWavesEffect>{{card.buttonText}}</a> -->
+          <hr>
+
+        </mdb-card-body>
+        <div class="pb-1 icon-list d-flex justify-content-around">
+          <a data-toggle="tooltip" data-placement="top" mdbTooltip="Add to Cart">
+            <mdb-icon fas icon="shopping-cart" class="grey-text"></mdb-icon>
+          </a>
+          <a data-toggle="tooltip" data-placement="top" mdbTooltip="Share">
+            <mdb-icon fas icon="share-alt" class="grey-text"></mdb-icon>
+          </a>
+          <a class="active" data-toggle="tooltip" data-placement="top" mdbTooltip="Added to Wishlist">
+            <mdb-icon fas icon="heart" class=""></mdb-icon>
+          </a>
+        </div>
+      </mdb-card>
+    </div>
+  </div>
+</div>

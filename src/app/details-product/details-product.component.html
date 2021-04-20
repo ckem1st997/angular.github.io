@@ -1,0 +1,275 @@
+<main class="detailsProducts">
+  <mdb-breadcrumb>
+    <mdb-breadcrumb-item [routerLink]="['/']" routerLinkActive="router-link-active"  class="blue-text">Home</mdb-breadcrumb-item>
+    <mdb-breadcrumb-item class="active">{{product.name}}</mdb-breadcrumb-item>
+  </mdb-breadcrumb>
+  <div class="details container-fluid">
+    <div class="row">
+      <div class="col-12 col-lg-7">
+        <div class="slidemobile d-sm-none">
+          <mdb-carousel class="carousel slide carousel-fade d-flex flex-column-reverse" [type]="'carousel-thumbnails'"
+            [animation]="'fade'">
+              <mdb-carousel-item *ngFor="let item of listimg;index as i">
+                    <cl-image public-id="{{item}}">
+                      <cl-transformation quality="auto" fetch-format="auto" width="528" height="528" crop="scale">
+                      </cl-transformation>
+                    </cl-image>
+
+              </mdb-carousel-item>
+           
+            
+          </mdb-carousel>
+        </div>
+        <div class="slidedesktop d-none d-sm-block">
+          <div class="product-gallery d-flex">
+            <div class="product-gallery__thumbs-container hidden-sm hidden-xs">
+              <div class="product-gallery__thumbs thumb-fix">
+
+                <div class="product-gallery__thumb active" (click)="changeImage($event)" *ngFor="let item of listimg">
+                  <a class="product-gallery__thumb-placeholder" href="javascript:void(0);">
+                    <cl-image public-id="{{item}}">
+                      <cl-transformation quality="auto" fetch-format="auto" width="828" height="828" crop="fill">
+                      </cl-transformation>
+                    </cl-image>
+                  </a>
+                </div>
+
+          
+              </div>
+            </div>
+            <div class="product-image-detail box__product-gallery scroll hidden-sm hidden-xs">
+              <ul id="sliderproduct" class="site-box-content slide_product">
+                <li class="product-gallery-item gallery-item current">
+                  <img class="product-image-feature" [src]="srcimg" alt=" Áo thun BOUTON x M.ons ">
+                </li>
+              </ul>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-5">
+        <div class="info-product">
+          <h3>{{product.name}}</h3>
+          <div>
+            <mdb-badge [primary]="true">NEW</mdb-badge>
+
+            <mdb-badge class="ml-2" *ngIf="product.saleOff>0" [danger]="true">-{{CeilPrice(product.saleOff,product.price)}}%</mdb-badge>
+          </div>
+
+          <p class="text-black-50 mt-3">{{ProductPC.name}} </p>
+          <div class="check-list text-primary">
+            <mdb-icon fas icon="star"></mdb-icon>
+            <mdb-icon fas icon="star"></mdb-icon>
+            <mdb-icon fas icon="star"></mdb-icon>
+            <mdb-icon far icon="star"></mdb-icon>
+            <mdb-icon far icon="star"></mdb-icon>
+          </div>
+          <div class="list-price mt-3">
+            <div class="price-products d-flex">
+              <del *ngIf="product.saleOff>0" class="grey-text">{{product.price| number}}$</del>
+              <div class="text-danger ml-3">{{product.price-product.saleOff | number}}$</div>
+            </div>
+          </div>
+          <div class="content mt-3">
+           {{product.content}}
+          </div>
+          <div class="model row mt-3">
+            <div class="font-weight-bold col-2">
+              Model
+            </div>
+            <div class="col-10">
+              SP{{product.productId}}
+            </div>
+          </div>
+
+          <div *ngIf="color.length>0" class="color mt-3 row">
+            <div class="font-weight-bold col-2">
+              Color
+            </div>
+            <div class="layered-content filter-color s-filter swatch col-10">
+              <div class="select-swap d-flex flex-wrap">
+                <div *ngFor="let item of color;first as isFirst">
+                  <div [class.checked]="isFirst" class="swatch-element {{item.nameColor}} ">
+                    <input class="variant-1" id="swatch-1-{{item.nameColor}}" type="radio" name="option2" value="{{item.nameColor}}">
+                    <label class="lbSwatch" for="swatch-1-{{item.nameColor}}" (click)="checkedSize($event)"
+                      [style.background-color]="item.code">
+                      <img alt="sold-out" class="crossed-out"
+                        src="//theme.hstatic.net/1000253775/1000662899/14/soldout.png?v=885">
+                      <img alt="select-pro" class="img-check"
+                        src="//theme.hstatic.net/1000253775/1000662899/14/select-pro.png?v=885">
+                    </label>
+  
+                  </div>
+                </div>
+            
+              </div>
+             
+            </div>
+          </div>
+
+          <div *ngIf="size.length>0" class="size row mt-3">
+            <div class="font-weight-bold col-2" style="padding-top:16px">
+              Size
+            </div>
+            <div class="layered-content filter-color s-filter swatch col-10">
+              <div class="select-swap d-flex flex-wrap">
+                <div class="select-swap d-flex flex-wrap">
+                  <div *ngFor="let item of size;first as isFirst">
+                    <div [class.checked]="isFirst" class="swatch-element {{item.sizeProduc}}">
+                      <input class="variant-1" id="swatch-1-{{item.sizeProduc}}" type="radio" name="option2" value="{{item.sizeProduc}}">
+                      <label class="lbSwatch" for="swatch-1-{{item.sizeProduc}}" (click)="checkedSize($event)">
+                        {{item.sizeProduc}}
+                        <img alt="sold-out" class="crossed-out"
+                          src="//theme.hstatic.net/1000253775/1000662899/14/soldout.png?v=885">
+                        <img alt="select-pro" class="img-check"
+                          src="//theme.hstatic.net/1000253775/1000662899/14/select-pro.png?v=885">
+                      </label>
+    
+                    </div>
+                  </div>
+                
+                </div>
+                             
+              </div>
+            </div>
+          </div>
+
+          <div class="xuatxu row mt-3">
+            <div class="font-weight-bold col-2">
+              Delivery
+            </div>
+            <div class="col-10">
+              {{product.factory}}
+            </div>
+          </div>
+          <hr>
+          <div class="count-product d-flex">
+            <button type="button" class="" (click)="btnTru()">-</button>
+            <div class="md-form md-outline quantity">
+              <input type="text" id="form1" class="form-control" mdbInput [value]="numberproduct">
+              <label for="form1">Số lượng</label>
+            </div>
+            <button type="button" (click)="btnCong()">+</button>
+          </div>
+          <div class="d-flex btn-cart">
+            <button type="button" class="ml-0" mdbBtn color="primary" mdbWavesEffect>Mua ngay</button>
+            <button type="button" mdbBtn color="success" mdbWavesEffect>
+              <mdb-icon class="mr-1" fas icon="cart-plus"></mdb-icon>Thêm vào giỏ hàng
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+
+  <div class="tabs-products d-flex" style="padding-left: 15px;">
+    <div class="info">
+      <button type="button" class="ml-0" [class.active]="btnreview==true" (click)="changactivebtn()" mdbBtn
+        color="light" mdbWavesEffect>Thông tin</button>
+    </div>
+    <div class="review">
+      <button type="button" [class.active]="btnreview!=true" mdbBtn color="light" (click)="changactivebtn()"
+        mdbWavesEffect>Review</button>
+    </div>
+
+  </div>
+  <div class="content-info" [class.d-none]="btnreview!=true" style="padding-left: 15px;">
+    <div class="product-description" [innerHTML]="product.body">	
+
+    </div>
+  </div>
+  <div class="content-review mt-1" [class.d-none]="btnreview==true">
+    <h5 class="text-center"> 3 review for Blue Denim</h5>
+    <div class="container-fluid list-review">
+      <div class="row ">
+        <div class="user-review col-md-6 col-12 text-center mt-1">
+          <div class="userblock">
+            <div class="chip waves-effect">
+              <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Contact Person"> Jane Doe
+            </div>
+            <div class="check-list text-primary mb-1">
+              <mdb-icon fas icon="star"></mdb-icon>
+              <mdb-icon fas icon="star"></mdb-icon>
+              <mdb-icon fas icon="star"></mdb-icon>
+              <mdb-icon far icon="star"></mdb-icon>
+              <mdb-icon far icon="star"></mdb-icon>
+            </div>
+            <div>
+              Một sản phẩm được viết bởi Nguyễn Khả Hợp dựa trên
+              kiến trúc
+              MicroService, cảm ơn bạn vì đã bỏ chút thời gian để truy cập vào trang web của tớ nha...
+            </div>
+          </div>
+          <hr>
+          <div class="userblock">
+            <div class="chip waves-effect">
+              <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-7.jpg" alt="Contact Person"> Jane Doe
+            </div>
+            <div class="check-list text-primary mb-1">
+              <mdb-icon fas icon="star"></mdb-icon>
+              <mdb-icon fas icon="star"></mdb-icon>
+              <mdb-icon fas icon="star"></mdb-icon>
+              <mdb-icon far icon="star"></mdb-icon>
+              <mdb-icon far icon="star"></mdb-icon>
+            </div>
+            <div>
+              Một sản phẩm được viết bởi Nguyễn Khả Hợp dựa trên
+              kiến trúc
+              MicroService, cảm ơn bạn vì đã bỏ chút thời gian để truy cập vào trang web của tớ nha...
+            </div>
+          </div>
+          <div class="userblock">
+            <div class="chip waves-effect">
+              <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-8.jpg" alt="Contact Person"> Jane Doe
+            </div>
+            <div class="check-list text-primary mb-1">
+              <mdb-icon fas icon="star"></mdb-icon>
+              <mdb-icon fas icon="star"></mdb-icon>
+              <mdb-icon fas icon="star"></mdb-icon>
+              <mdb-icon far icon="star"></mdb-icon>
+              <mdb-icon far icon="star"></mdb-icon>
+            </div>
+            <div>
+              Một sản phẩm được viết bởi Nguyễn Khả Hợp dựa trên
+              kiến trúc
+              MicroService, cảm ơn bạn vì đã bỏ chút thời gian để truy cập vào trang web của tớ nha...
+            </div>
+          </div>
+        </div>
+        <div class="user-send col-md-6 col-12 ">
+          <div class="rate text-center">
+            <p class="">Rate the product</p>
+            <div class="check-list text-primary mb-1">
+              <mdb-icon fas icon="star"></mdb-icon>
+              <mdb-icon fas icon="star"></mdb-icon>
+              <mdb-icon fas icon="star"></mdb-icon>
+              <mdb-icon far icon="star"></mdb-icon>
+              <mdb-icon far icon="star"></mdb-icon>
+            </div>
+            <form style="text-align: left;">
+              <div class="md-form" >            
+                <mdb-icon fas icon="user-alt" class="prefix"></mdb-icon>
+                <input mdbInput type="text" id="form2" class="form-control">
+                <label for="form2">Name</label>
+                
+              </div>
+              <div class="md-form" >
+                <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
+                <input mdbInput type="text" id="form2" class="form-control">
+                <label for="form2">Email</label>
+              </div>
+              <div class="md-form">
+                <mdb-icon fas icon="pencil-alt" class="prefix"></mdb-icon>
+                <textarea type="text" id="form8" class="md-textarea form-control" mdbInput></textarea>
+                <label for="form8">Your Review</label>
+              </div>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

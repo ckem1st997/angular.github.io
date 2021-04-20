@@ -1,0 +1,97 @@
+#reviewblog .review-detail-wrapper {
+    border-bottom: 1px solid #333333;
+  }
+  #reviewblog .review-detail-wrapper .review-detail-post .review-detail-post-title .post-info i.fa-window-minimize {
+    transform: rotate(90deg);
+    color: #C4C4C4;
+  }
+  #reviewblog .review-detail-wrapper .review-detail-post .review-detail-post-title .post-info .by {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 142.68%;
+    /* or 43px */
+    text-align: center;
+    letter-spacing: 0.015em;
+    /* dark grey */
+    color: #3F3F3F;
+  }
+  #reviewblog .review-detail-wrapper .review-detail-post .review-detail-post-title .post-info span i {
+    padding-left: 5px;
+    margin-left: 10px;
+    color: #2C83D8;
+  }
+  #reviewblog .review-detail-wrapper .review-detail-post .main-bold {
+    padding: 25px;
+    font-weight: bold;
+    margin: 27px;
+    border-left: 6px solid #C4C4C4;
+  }
+  #reviewblog .review-detail-wrapper .review-detail-post .share-social {
+    font-size: 19px;
+    margin-bottom: 29px;
+  }
+  #reviewblog .review-detail-wrapper .review-detail-latest .latest-title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 142.68%;
+    /* or 43px */
+    text-align: center;
+    letter-spacing: 0.015em;
+    /* dark grey */
+    color: #3F3F3F;
+    margin-bottom: 41px;
+  }
+  #reviewblog .review-detail-wrapper .review-detail-latest-content {
+    margin-bottom: 47px;
+    border-bottom: 1px solid #000000;
+    padding: -7px;
+    padding-bottom: 45px;
+    transition: all 0.4s ease;
+  }
+  #reviewblog .review-detail-wrapper .review-detail-latest-content img {
+    height: 78px;
+  }
+  #reviewblog .review-detail-wrapper .review-detail-latest-content div span {
+    letter-spacing: 0;
+  }
+  #reviewblog .review-detail-wrapper .review-detail-latest-content:hover {
+    transform: translateY(-10px);
+  }
+  #reviewblog .review-detail-wrapper .review-detail-latest-content:hover div span {
+    color: #48CAB2;
+  }
+  #reviewblog .review-detail-wrapper .key-word label {
+    transition: all 0.4s ease;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+  #reviewblog .review-detail-wrapper .key-word label:hover {
+    transform: translateY(-5px);
+    background-color: orangered;
+    color: white;
+  }
+  .date-info {
+    font-family: Roboto;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 142.68%;
+    letter-spacing: 0.015em;
+    color: #3F3F3F;
+  }
+  .post-title {
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 142.68%;
+    text-align: center;
+    letter-spacing: .015em;
+    color: #3f3f3f;
+}

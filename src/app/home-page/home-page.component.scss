@@ -1,0 +1,56 @@
+main.home-page{
+    margin-top: 10px;
+}
+.counter {
+    position: relative;
+    top: -23px;
+    left: auto;
+    z-index: 2;
+    padding: 1px 7px;
+    margin-left: -23px;
+    font-size: 11px;
+    color: #fff;
+    background-color: #fe1212;
+    border-radius: 10em;
+    -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+.collection-card .stripe.dark {
+    background-color: rgba(0,0,0,0.7);
+}
+
+.collection-card .stripe {
+    position: absolute;
+    bottom: 3rem;
+    width: 100%;
+    padding: 1.2rem;
+    text-align: center;
+}
+.collection-card .stripe.light {
+    background-color: rgba(255,255,255,0.7);
+}
+
+.collection-card .stripe {
+    position: absolute;
+    bottom: 3rem;
+    width: 100%;
+    padding: 1.2rem;
+    text-align: center;
+}
+.collection-card .stripe.light a p {
+    color: #424242;
+}
+
+.collection-card .stripe a p {
+    padding: 0;
+    margin: 0;
+    letter-spacing: .25rem;
+}
+.collection-card .stripe.dark a p {
+    color: #eee;
+}
+.collection-card .stripe a p {
+    padding: 0;
+    margin: 0;
+    letter-spacing: .25rem;
+}

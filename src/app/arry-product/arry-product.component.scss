@@ -1,0 +1,24 @@
+@media screen and (max-width: 768px) {
+    .name-products{
+        font-size: 11px;
+    }
+    .price-products{
+        font-size: 12px;
+    }
+}
+@media screen and (min-width: 992px) {
+	.price-products{
+		font-size: 12px;
+	}
+}
+@media screen and (min-width: 1200px) {
+	.price-products{
+		font-size: 16px;
+	}
+}
+// .card-title{
+//     h6{
+//         font-size: 15px;
+//     }
+// }
+
