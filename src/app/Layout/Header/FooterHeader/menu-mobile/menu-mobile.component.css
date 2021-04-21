@@ -1,3 +1,33 @@
+.header a {
+  display: block;
+  width: 50px;
+  height: 44px;
+  padding: 11px;
+  margin: 2px;
+  position: absolute;
+  color: #000;
+  top: 0;
+  left: 0;
+  margin-left: 18px;
+}
+.header a:before, .header a:after {
+  content: '';
+  display: block;
+  background: #000;
+  height: 2px;
+}
+.header a span {
+  background: #000;
+  display: block;
+  height: 2px;
+  margin: 6px 0;
+}
+.header a:before, .header a:after {
+  content: '';
+  display: block;
+  background: #000;
+  height: 2px;
+}
 li {
   list-style: none;
 }
