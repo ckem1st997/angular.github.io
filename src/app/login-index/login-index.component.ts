@@ -1,6 +1,8 @@
+import { UserDataService } from './../service/user-data.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { AuthServiceService } from '../service/AuthService.service';
+import { TokenStorageServiceService } from '../service/TokenStorageService.service';
 @Component({
   selector: 'app-login-index',
   templateUrl: './login-index.component.html',
@@ -8,35 +10,61 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class LoginIndexComponent implements OnInit {
   returnUrl: string;
-  
-  constructor(private route: ActivatedRoute, private router: Router) {
-    const id = +this.route.queryParams.subscribe(values => {
-      this.returnUrl = values["returnUrl"];
-     // console.log(this.returnUrl);//Which will print the properties you have passed
-    });
-  }
+  form: any = {
+    username: "user@example.com",
+    password: "string"
+  };
+  isLoggedIn = false;
+  isLoginFailed = false;
+  errorMessage = '';
+  roles: string
+  constructor(private route: ActivatedRoute, private router: Router, private authService: AuthServiceService, private tokenStorage: TokenStorageServiceService, private user: UserDataService) { }
 
   ngOnInit(): void {
-
+    const id = +this.route.queryParams.subscribe(values => {
+      this.returnUrl = values["returnUrl"]
+    });
+    if (this.tokenStorage.getToken()) {
+      this.isLoggedIn = true;
+      // this.roles = this.tokenStorage.getUser().roles;
+    }
+    // this.user.getUser("6085551dd42969f97f1e3a3d").subscribe(item => this.tokenStorage.saveUser(item))
   }
 
-  login(returnUrl: string) {
-      localStorage.setItem("home", "true")
-      this.router.navigate([returnUrl]);
-      alert("Login thành công !");
+  onSubmit() {
+    const item = this.form;
+
+    this.authService.login(item).subscribe(
+      data => {
+        try {
+          if (data.token && data.expiration) {
+            this.roles = "Đăng nhập thành công nha !";
+            this.tokenStorage.saveToken(data.token);
+            this.isLoginFailed = false;
+            this.isLoggedIn = true;
+            this.tokenStorage.saveId(data.id)
+           // window.location.reload();
+
+            //  this.router.navigate([this.returnUrl])
+            window.location.href = this.returnUrl;
+            // this.reloadPage();
+
+          }
+        } catch (error) {
+          this.errorMessage = "Tên đăng nhập hoặc mật khẩu hông chính xác nha !";
+          this.isLoginFailed = true;
+        }
+
+      },
+      err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+      }
+    );
   }
-  logOut() {
-    localStorage.removeItem("home")
-    if (localStorage.getItem("home")==null)
-      alert("Logot thành công !");
-    else
-      alert("Logout thất bại !");
+
+  reloadPage(): void {
+    window.location.reload();
+
   }
-
-
-
-}
-export interface ILogin {
-  username: string;
-  password: string;
 }

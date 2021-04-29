@@ -10,7 +10,7 @@ import { IPhanTrang } from '../models/IPhanTrang';
   providedIn: 'root'
 })
 export class PhanTrangServiceService {
-  private heroesUrl = environment.ApiUrl;
+  private heroesUrl = environment.Api+"a/";
   constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({ 

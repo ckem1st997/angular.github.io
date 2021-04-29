@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment.prod';
   providedIn: 'root'
 })
 export class HomeServiceService {
-  private heroesUrl = environment.ApiUrl;
+  private heroesUrl = environment.Api+"a/";
   constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({ 

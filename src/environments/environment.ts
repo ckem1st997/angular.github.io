@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  ApiUrl:"http://apiangular.somee.com/"
+  // ApiUrl:"http://apiangular.somee.com/",
+  // Api:"http://cartaccount.somee.com/",
+  Api:"http://apigate.somee.com/"
 };
 
 /*

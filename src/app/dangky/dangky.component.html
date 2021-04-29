@@ -21,11 +21,20 @@
           </div>
         </div>
       </div>
+
       <div class="form-group">
-        <button class="btn btn-primary btn-block">
-          Login
-        </button>
-        <button class="btn btn-primary btn-block" [routerLink]="['/dangky']" >
+        <label for="confirmPassword">ConfirmPassword</label>
+        <input type="password" class="form-control" name="confirmPassword" [(ngModel)]="form.confirmPassword" required minlength="6"
+        #confirmPassword="ngModel" />
+        <div class="alert alert-danger" role="alert" *ngIf="confirmPassword.errors && f.submitted">
+          <div *ngIf="confirmPassword.errors.required">Password is required</div>
+          <div *ngIf="confirmPassword.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">       
+        <button class="btn btn-primary btn-block" >
           Đăng ký
         </button>
       </div>

@@ -1,14 +1,22 @@
+import { ICart } from './../models/ICart';
+import { MongoDBService } from './../service/MongoDB.service';
 import { IProductCategory } from 'src/app/models/IProductCategory';
 import { GetSize } from './../models/GetSize';
 import { GetColor } from './../models/GetColor';
 import { IProducts } from './../models/IProducts';
 import { element } from 'protractor';
 import { IProductDetails } from './../models/IProductDetails.';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ProductsDeatilsService } from '../service/Products-Deatils.service';
 import { ActivatedRoute } from '@angular/router';
 import { Guid } from '../extension/Guid';
+import { NotifierService } from 'angular-notifier';
+import { ngxLoadingAnimationTypes, NgxLoadingComponent } from 'ngx-loading';
 
+const PrimaryWhite = '#ffffff';
+const SecondaryGrey = '#ccc';
+const PrimaryRed = '#dd0031';
+const SecondaryBlue = '#006ddd';
 @Component({
   selector: 'app-details-product',
   templateUrl: './details-product.component.html',
@@ -27,10 +35,24 @@ export class DetailsProductComponent implements OnInit {
   size: GetSize[]
   nameCT: string
   listSelect: string = ""
-  constructor(private item: ProductsDeatilsService, private route: ActivatedRoute) {
+  Cart: ICart
+  //
+  @ViewChild('ngxLoading', { static: false }) ngxLoadingComponent: NgxLoadingComponent;
+  @ViewChild('customLoadingTemplate', { static: false }) customLoadingTemplate: TemplateRef<any>;
+  public ngxLoadingAnimationTypes = ngxLoadingAnimationTypes;
+  public loading = false;
+  public primaryColour = PrimaryRed;
+  public secondaryColour = SecondaryBlue;
+  public coloursEnabled = false;
+  public loadingTemplate: TemplateRef<any>;
+  public config = { animationType: ngxLoadingAnimationTypes.none, primaryColour: this.primaryColour, secondaryColour: this.secondaryColour, tertiaryColour: this.primaryColour, backdropBorderRadius: '3px' };
 
+  //
+  constructor(private notifier: NotifierService, private item: ProductsDeatilsService, private route: ActivatedRoute, private cart: MongoDBService) {
   }
-
+  showNotification(type: string, message: string) {
+    this.notifier.notify(type, message);
+  }
   ngOnInit() {
     this.getPD();
 
@@ -72,8 +94,13 @@ export class DetailsProductComponent implements OnInit {
       // console.log(list[index].children[0].className)
     }
     event.target.parentNode.className = event.target.parentNode.className + " checked";
+
+    //  console.log(this.listSelect)
   }
 
+  btnChange(event: any) {
+    this.numberproduct = Number(event.target.value);
+  }
   btnCong() {
     this.numberproduct += 1;
   }
@@ -91,24 +118,48 @@ export class DetailsProductComponent implements OnInit {
   addCart(ent: any) {
     if (localStorage.getItem('idCart') == null)
       localStorage.setItem('idCart', Guid.newGuid());
-    console.log(this.product.productId)
-    console.log(localStorage.getItem('idCart'))
-    console.log(this.product.price)
-    console.log(this.product.image.split(',')[1])
-    console.log(this.numberproduct)
+    this.listSelect = "";
     var color = document.getElementsByClassName("swatch-element")
     for (let index = 0; index < color.length; index++) {
       const element = color[index];
-
       if (element.className.indexOf("checked") != -1) {
-        //  console.log(element.id)
         this.listSelect += "," + element.id
-        //console.log(element.children[0])
       }
-
     }
+    const data = {
+      id: "",
+      cartId: localStorage.getItem('idCart'),
+      productID: this.product.productId,
+      price: this.product.saleOff > 0 ? this.product.price - this.product.saleOff : this.product.price,
+      image: this.product.image.split(',')[1],
+      count: this.numberproduct > 0 ? this.numberproduct : 1,
+      size: this.listSelect.split(',')[2],
+      color: this.listSelect.split(',')[1],
+      dateCreated: undefined,
+      name: this.product.name
+    }
+    this.loading = true
+    //  console.log(data)
+    this.cart.addCart(data).subscribe(
+      response => {
+        // console.log(response);
+        this.loading = false
+        if (response)
+        {
+          this.showNotification("success", "Thêm thành công nha !")
 
-    console.log(this.listSelect)
+        }
+        else {
+          this.showNotification("warning", "Thất bại, xin vui lòng thử lại nha !")
+          this.showNotification("warning", "Lỗi sản phẩm hoặc !")
+          this.showNotification("warning", "Số lượng max giỏ hàng là 10 !")
+        }
+
+      },
+      error => {
+        console.log(error);
+      });
   }
 }
+//https://www.npmjs.com/package/angular-notifier
 

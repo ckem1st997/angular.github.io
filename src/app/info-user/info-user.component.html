@@ -1,0 +1,19 @@
+<table mdbTable style="height: 500px">
+  <thead>
+    <tr>
+      <th scope="col">ID </th>
+      <th scope="col">EMAIL </th>
+      <th scope="col">NAME </th>
+      <th scope="col">MOBILE </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr mdbTableCol>
+      <th scope="row">{{userdata.id}}</th>
+      <td>{{userdata.email}}</td>
+      <td>{{userdata.fullname}}</td>
+      <td>{{userdata.mobile}}</td>
+    </tr>
+  </tbody>
+</table>
+<button type="button" mdbBtn color="danger" (click)="signout()" mdbWavesEffect>Đăng xuất</button>

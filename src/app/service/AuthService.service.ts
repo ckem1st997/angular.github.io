@@ -1,15 +1,22 @@
-import { environment } from '../../environments/environment.prod';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IMenuDesktop } from '../models/IMenuDesktop';
 import { Observable, of } from 'rxjs';
+import { environment } from 'src/environments/environment.prod';
 import { catchError } from 'rxjs/operators';
+import { IRegister } from '../models/IRegister';
+import { ILogin } from '../models/ILogin';
 
+
+const AUTH_API = environment.Api;
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 @Injectable({
   providedIn: 'root'
 })
-export class MenuServiceService {
-  private heroesUrl = environment.Api+"a/";
+export class AuthServiceService {
   constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({ 
@@ -18,25 +25,22 @@ export class MenuServiceService {
    })
   };
 
-  getMenu(): Observable<IMenuDesktop[]> {
-    // return this.http.get<IMenuDesktop[]>(this.heroesUrl);
-    return this.http.get<IMenuDesktop[]>(this.heroesUrl+'PublicAPI/getMenuDesktop',this.httpOptions)
-      .pipe(catchError(this.handleError<IMenuDesktop[]>('getHeroes', []))
-      );
+  login(item:ILogin): Observable<any> {
+    return this.http.post<any>(AUTH_API + 'accountapi/User/Login', item, this.httpOptions)
+    .pipe(catchError(
+      this.handleError<any>('login'))
+    );
+  }
+
+  register(item:IRegister): Observable<any> {
+    return this.http.post<any>(AUTH_API + 'accountapi/User/addAcount',item, this.httpOptions)
+    .pipe(catchError(
+      this.handleError<any>('Register'))
+    )
   }
 
 
-
-
-
-
-
-
-
-
-
-
-
+  
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -51,6 +55,4 @@ export class MenuServiceService {
       return of(result as T);
     };
   }
-
-
 }

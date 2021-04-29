@@ -12,7 +12,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ProductsDeatilsService {
-  private heroesUrl = environment.ApiUrl;
+  private heroesUrl = environment.Api+"a/";
   constructor(private http: HttpClient) { }
   httpOptions = {
     headers: new HttpHeaders({ 

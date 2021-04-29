@@ -1,4 +1,10 @@
-
+@import "~angular-notifier/styles";
+.spinner-circle-swish{
+	position: fixed !important;
+}
+.backdrop{
+  position: fixed !important;
+}
 img{
     max-width: 100%;
   }

@@ -1,6 +1,6 @@
 <div class="header-wrap-icon d-flex">
   <span class="icon-account" aria-label="Tài khoản" title="Tài khoản">
-    <a routerLink="cms" class="toggle-dropdown">
+    <a routerLink="userinfo" class="toggle-dropdown">
       <span class="account-menu" aria-hidden="true">
         <svg
           class="svg-account"
@@ -28,14 +28,7 @@
       </span>
     </a>
     <div class="account-dropdown">
-      <a href="javascript:void()" class="toggle-dropdown"> </a>
-      <div class="account-dropdown-item">
-        <a href="javascript:void()" class="toggle-dropdown"> </a
-        ><a href="/account?view=account_info.smb">Chào, Nguyễn Khả Hợp</a>
-      </div>
-      <div class="account-dropdown-item">
-        <a href="/account/logout">Đăng xuất</a>
-      </div>
+      <a [routerLink]="['/kkk']" routerLinkActive="router-link-active"  class="toggle-dropdown"> </a>
     </div>
   </span>
   <span
@@ -99,7 +92,7 @@
             ></path>
           </g>
         </svg>
-        <span class="count-holder"><span class="count">0</span></span>
+        <span class="count-holder"><span class="count">{{count}}</span></span>
       </span>
     </a>
   </span>

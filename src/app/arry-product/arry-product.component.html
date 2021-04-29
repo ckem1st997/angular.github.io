@@ -4,11 +4,11 @@
       <mdb-card routerLink="/products/{{card.productId}}/{{slugify(card.name)}}" class="my-1">
         <div class="view overlay zoom header-products-col">
           <!-- <mdb-card-img [src]="card.image.split(',')[1]" alt="Card image cap"></mdb-card-img> -->
-          <!-- <cl-image public-id="{{card.image.split(',')[1]}}">
-            <cl-transformation quality="auto" fetch-format="auto" width="457" height="457" crop="scale">
+         <cl-image public-id="{{card.image.split(',')[2]}}" loading="lazy">
+            <cl-transformation quality="auto"  fetch-format="auto" width="457" height="457" crop="scale">
             </cl-transformation>
-          </cl-image> -->
-          <img src="http://res.cloudinary.com/imageshared/image/upload/c_scale,f_auto,h_457,q_auto,w_457/v1/{{card.image.split(',')[2]}}">
+          </cl-image>
+          <!-- <img src="http://res.cloudinary.com/imageshared/image/upload/c_scale,f_auto,h_457,q_auto,w_457/v1/{{card.image.split(',')[2]}}"> -->
           <div class="mask flex-center">
             <p class="white-text">Mua</p>
           </div>

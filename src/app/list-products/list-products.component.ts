@@ -30,7 +30,7 @@ export class ListProductsComponent implements OnInit {
   namepc:string="Sản phẩm";
   imgpc:string;
   constructor(private router: Router, private list: HomeServiceService, private item: PhanTrangServiceService, private route: ActivatedRoute) {
-    router.events.subscribe(event => {
+    this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.id = this.route.snapshot.params.id;
         // this.numberpage=1

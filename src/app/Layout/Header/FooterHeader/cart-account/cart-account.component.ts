@@ -1,3 +1,4 @@
+import { MongoDBService } from './../../../../service/MongoDB.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart-account.component.css']
 })
 export class CartAccountComponent implements OnInit {
-
-  constructor() { }
+  count: any
+  constructor(private cart: MongoDBService) { }
 
   ngOnInit() {
+    this.cart.getCartItems(window.localStorage.getItem("idCart")).subscribe(item => this.count = item.length)
+
   }
 
 }

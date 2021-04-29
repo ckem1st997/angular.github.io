@@ -52,10 +52,10 @@
     <div class="col-lg-3 col-6 mb-4">
 
       <!--Collection card-->
-      <mdb-card class="collection-card z-depth-1-half" [routerLink]="['/listproduct/14']"
+      <mdb-card class="collection-card z-depth-1-half" 
         routerLinkActive="router-link-active">
         <!--Card image-->
-        <div class="view zoom waves-light" mdbWavesEffect>
+        <div class="view zoom waves-light" mdbWavesEffect routerLink='listproduct/14/quan'>
           <mdb-card-img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/5.jpg" alt="">
           </mdb-card-img>
           <div class="stripe dark">
@@ -77,7 +77,7 @@
     <div class="col-lg-3 col-6 mb-4">
 
       <!--Collection card-->
-      <mdb-card class="collection-card z-depth-1-half" [routerLink]="['/listproduct/12']">
+      <mdb-card class="collection-card z-depth-1-half" [routerLink]="['/listproduct/12/ao']">
         <!--Card image-->
         <div class="view zoom waves-light" mdbWavesEffect>
           <mdb-card-img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/8.jpg" alt="">
@@ -101,7 +101,7 @@
     <div class="col-lg-3 col-6 mb-4">
 
       <!--Collection card-->
-      <mdb-card class="collection-card z-depth-1-half" [routerLink]="['/listproduct/17']">
+      <mdb-card class="collection-card z-depth-1-half" [routerLink]="['/listproduct/18/ao-thun']">
         <!--Card image-->
         <div class="view zoom waves-light" mdbWavesEffect>
           <mdb-card-img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/9.jpg" alt="">
@@ -125,7 +125,7 @@
     <div class="col-lg-3 col-6 mb-4">
 
       <!--Collection card-->
-      <mdb-card class="collection-card z-depth-1-half" [routerLink]="['/listproduct/18']">
+      <mdb-card class="collection-card z-depth-1-half" [routerLink]="['/listproduct/17/ao-so-mi']">
         <!--Card image-->
         <div class="view zoom waves-light" mdbWavesEffect>
           <mdb-card-img src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/7.jpg" alt="">
@@ -214,8 +214,13 @@
       <div class="single-news mb-lg-0 mb-4" *ngFor="let item of listA;first as isFirst">
         <div *ngIf="isFirst" routerLink='/article/{{item.id}}/{{item.url}}'>
           <div class="view overlay rounded z-depth-1-half mb-4">
-            <img src="http://res.cloudinary.com/imageshared/image/upload/f_auto,q_auto/v1/{{item.coverImage}}">
-
+            <!-- <img src="http://res.cloudinary.com/imageshared/image/upload/f_auto,q_auto/v1/{{item.coverImage}}"> -->
+            <cl-image public-id="{{item.coverImage}}">
+              <cl-transformation quality="auto" loading="lazy" fetch-format="auto">
+              </cl-transformation>
+              <cl-placeholder type="vectorize">
+              </cl-placeholder>
+            </cl-image>
             <a>
               <div class="mask rgba-white-slight waves-light" mdbWavesEffect></div>
             </a>

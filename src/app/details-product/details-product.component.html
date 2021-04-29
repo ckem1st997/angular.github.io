@@ -147,13 +147,13 @@
           <div class="count-product d-flex">
             <button type="button" class="" (click)="btnTru()">-</button>
             <div class="md-form md-outline quantity">
-              <input type="text" id="form1" class="form-control" mdbInput [value]="numberproduct">
+              <input type="text" id="form1" (change)="btnChange($event)" class="form-control" mdbInput [value]="numberproduct">
               <label for="form1">Số lượng</label>
             </div>
             <button type="button" (click)="btnCong()">+</button>
           </div>
           <div class="d-flex btn-cart">
-            <button type="button" class="ml-0" mdbBtn color="primary" mdbWavesEffect>Mua ngay</button>
+            <button type="button" class="ml-0" mdbBtn color="primary" mdbWavesEffect >Mua ngay</button>
             <button type="button" mdbBtn color="success" mdbWavesEffect (click)="addCart($event)">
               <mdb-icon class="mr-1" fas icon="cart-plus" ></mdb-icon>Thêm vào giỏ hàng
             </button>
@@ -272,4 +272,8 @@
       </div>
     </div>
   </div>
+
 </main>
+<ngx-loading [show]="loading" [config]="{animationType: ngxLoadingAnimationTypes.circleSwish, primaryColour: primaryColour, backdropBorderRadius: '3px'}"
+[template]="loadingTemplate"></ngx-loading>
+<notifier-container></notifier-container>

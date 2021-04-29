@@ -52,6 +52,10 @@ export class MenuMobileComponent implements OnInit {
     this.active = false;
     this.newItemEvent.emit(this.active);
   }
+  closea(){
+    this.active = false;
+    this.newItemEvent.emit(this.active);
+  }
   slugify( text:string) {
     return text
     .toString()
